@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gridview/area.dart';
 
 class grid extends StatefulWidget {
   const grid({super.key});
@@ -12,7 +13,7 @@ class _gridState extends State<grid> {
   final List<Map<String, dynamic>>
   _listItem = [
 
-  {"image": 'asset/image/flat.png', "title": "My Flat"},
+  {"image": 'asset/image/flat.png', "title": "My Flat",},
   {"image": 'asset/image/cost.png', "title": "cost"},
   {"image": 'asset/image/location.png', "title": "location"},
   {"image": 'asset/image/flat.png', "title": "hello"},
@@ -63,16 +64,22 @@ class _gridState extends State<grid> {
                     children:[ ..._listItem.map((item) => Container(
                       child: Column(
                         children: [
-                          Container(
-                            height: 40,
-                            width: 40,//First
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.fitWidth,
-                                  image: Image.asset(item["image"].toString()).image,
-                                )
-                            ),
+                          InkWell(
+                            child:Container(
+                      height: 40,
+                        width: 40,//First
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.fitWidth,
+                              image: Image.asset(item["image"].toString()).image,
+                            )
+                        ),
+                      ),
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const area()));
+
+                          },
                           ),
                           // Container(
                           //   decoration: BoxDecoration(
